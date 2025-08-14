@@ -1,0 +1,87 @@
+/* Базові стилі */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f0f0f0;
+}
+
+/* Меню навігації */
+.navbar {
+  background-color: #1d3557;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.menu > li {
+  position: relative;
+}
+
+.menu a {
+  display: block;
+  padding: 15px 20px;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.menu a:hover {
+  background-color: #457b9d;
+}
+
+/* Підменю */
+.submenu {
+  list-style: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #a8dadc;
+  min-width: 180px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.submenu li a {
+  padding: 10px 15px;
+  color: #1d3557;
+}
+
+.submenu li a:hover {
+  background-color: #f1faee;
+}
+
+/* Поява підменю при наведенні */
+.has-submenu:hover .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+  }
+  .menu > li {
+    width: 100%;
+  }
+  .submenu {
+    position: relative;
+    top: 0;
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    display: none; /* ховаємо підменю по замовчуванню */
+  }
+  .has-submenu:hover .submenu,
+  .has-submenu:focus-within .submenu {
+    display: block;
+  }
+}
